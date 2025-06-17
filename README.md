@@ -1,2 +1,2 @@
 # golang
-go r
+go 
