@@ -27,6 +27,5 @@ func main() {
 		})
 	}
 	err = DB.Create(&StudentList).Error
-	fmt.Println(err)
 
 }

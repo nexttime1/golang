@@ -70,6 +70,7 @@ type Person struct {
 	Age  int    `gorm:"size:3;not null;column:年龄"`
 }
 
+//
 //func main() {
 //	//这是非全局  这个DB就是有日志功能
 //	//DB = DB.Session(&gorm.Session{
