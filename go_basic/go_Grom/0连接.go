@@ -69,12 +69,6 @@ type Person struct {
 	Name string `gorm:"size:5;not null;column:姓名"`
 	Age  int    `gorm:"size:3;not null;column:年龄"`
 }
-type Student struct {
-	ID    uint    `gorm:"primary_key;size:10;column:id学号" json:"id"`
-	Name  string  `gorm:"size:16;column:姓名"  json:"name"`
-	Age   int     `gorm:"size:3;column:年龄"   json:"age"`
-	Email *string `gorm:"size:255;column:邮件;default:2083933996@qq.com"  json:"email"`
-}
 
 //func main() {
 //	//这是非全局  这个DB就是有日志功能
