@@ -5,7 +5,6 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
-	"gorm.io/gorm/schema"
 )
 
 var DB *gorm.DB
@@ -36,12 +35,12 @@ func init() {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		//为了确保数据一致性，GORM 会在事务里执行写入操作（创建、更新、删除）。如果没有这方面的要求，您可以在初始化时禁用它，这样可以获得60%的性能提升
 		SkipDefaultTransaction: true,
-		NamingStrategy: schema.NamingStrategy{
-			TablePrefix:   "f_",  // 表名前缀
-			SingularTable: false, // 单数表名
-			NoLowerCase:   false, // 关闭小写转换
-		},
-		Logger: mysqlLogger,
+		//NamingStrategy: schema.NamingStrategy{
+		//	TablePrefix:   "f_",  // 表名前缀
+		//	SingularTable: false, // 单数表名
+		//	NoLowerCase:   false, // 关闭小写转换
+		//},
+		//Logger: mysqlLogger,
 	})
 	if err != nil {
 		panic("连接数据库失败, error=" + err.Error())
@@ -68,6 +67,12 @@ type Person struct {
 	ID   uint   `gorm:"size:10;primaryKey;column:ID号码"`
 	Name string `gorm:"size:5;not null;column:姓名"`
 	Age  int    `gorm:"size:3;not null;column:年龄"`
+}
+type Student struct {
+	ID    uint    `gorm:"primary_key;size:10;column:id学号"`
+	Name  string  `gorm:"size:16;column:姓名"`
+	Age   int     `gorm:"size:3;column:年龄"`
+	Email *string `gorm:"size:255;column:邮件;default:2083933996@qq.com"`
 }
 
 //func main() {

@@ -2,13 +2,6 @@ package main
 
 import "fmt"
 
-type Student struct {
-	ID    uint    `gorm:"primary_key;size:10;column:id学号"`
-	Name  string  `gorm:"size:16;column:姓名"`
-	Age   int     `gorm:"size:3;column:年龄"`
-	Email *string `gorm:"size:255;column:邮件;default:2083933996@qq.com"`
-}
-
 func main() {
 	DB.AutoMigrate(&Student{}) //创建一个表
 	err := DB.Create(&Student{Name: "薛提猛", Age: 22}).Error
