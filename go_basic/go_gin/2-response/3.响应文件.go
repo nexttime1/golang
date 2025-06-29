@@ -12,4 +12,5 @@ func main() {
 		c.Header("Content-Disposition", "attachment; filename=3.响应文件.go") //用来指定下载下来的文件名
 		c.File("3.响应文件.go")
 	})
+	r.Run(":8080")
 }

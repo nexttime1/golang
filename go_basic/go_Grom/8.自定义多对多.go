@@ -6,16 +6,6 @@ import (
 	"time"
 )
 
-/*
-从 Label 角度看：
-Label.Passages 表示 "这个标签属于哪些文章"
-中间表需要记录：LabelID → PassageID
-所以 foreignKey:LabelID（当前模型 ID）和 joinForeignKey:PassageID（关联模型 ID）
-从 Passage 角度看：
-Passage.Labels 表示 "这篇文章有哪些标签"
-中间表需要记录：PassageID → LabelID
-所以 foreignKey:PassageID（当前模型 ID）和 joinForeignKey:LabelID（关联模型 ID）
-*/
 type Label struct {
 	ID       uint `gorm:"primaryKey"`
 	Name     string
@@ -45,27 +35,27 @@ func main() {
 	//DB.AutoMigrate(&Passage{}, &Label{}, &PassageLabel{})
 
 	//添加
-	//DB.Create(&Passage{
-	//	Title: "计算机科学与技术",
-	//	Labels: []Label{
-	//		{Name: "Python"},
-	//		{Name: "Go"},
-	//		{Name: "Java"},
-	//	},
-	//})
-	//DB.Create(&Label{
-	//	Name: "大数据",
-	//})
-	//DB.Create(&Passage{
-	//	Title: "软件工程",
-	//})
+	DB.Create(&Passage{
+		Title: "计算机科学与技术",
+		Labels: []Label{
+			{Name: "Python"},
+			{Name: "Go"},
+			{Name: "Java"},
+		},
+	})
+	DB.Create(&Label{
+		Name: "大数据",
+	})
+	DB.Create(&Passage{
+		Title: "软件工程",
+	})
 	//已知 Passage  添加title  和关系
-	//var p1 []Passage
-	//DB.Find(&p1, "title = ?", "软件工程")
-	//DB.Create(&Label{
-	//	Name:     "数据挖掘",
-	//	Passages: p1,
-	//})
+	var p1 []Passage
+	DB.Find(&p1, "title = ?", "软件工程")
+	DB.Create(&Label{
+		Name:     "数据挖掘",
+		Passages: p1,
+	})
 	// 将原来的 Label  替换
 	var l1 []Label
 	DB.Find(&l1, []int{4, 7})
