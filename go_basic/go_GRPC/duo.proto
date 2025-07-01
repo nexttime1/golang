@@ -1,0 +1,30 @@
+syntax = "proto3";
+package hello_grpc;
+
+// 指定golang包名
+option go_package = "/duo_grpc";
+
+
+service VideoServer {
+  rpc Look(VideoRequest) returns (VideoResponse){}
+
+}
+
+message VideoRequest{
+  string name = 1;
+}
+message VideoResponse{
+  string name = 1;
+}
+
+service OrderServer {
+  rpc Buy(OrderRequest) returns (OrderResponse){}
+
+}
+
+message OrderRequest{
+  string name = 1;
+}
+message OrderResponse{
+  string name = 1;
+}

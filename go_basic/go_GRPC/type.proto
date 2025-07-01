@@ -1,0 +1,57 @@
+syntax = "proto3";
+package hello_grpc;
+
+// 指定golang包名
+option go_package = "/type_grpc";
+
+
+//service 对应的就是go里面的接口，可以作为服务端，客户端
+//
+//rpc 对应的就是结构体中的方法
+//
+//message对应的也是结构体
+
+//文件名建议下划线，例如：my_student.proto
+//包名和目录名对应
+//服务名、方法名、消息名均为大驼峰
+//字段名为下划线
+
+service TypeService {
+  rpc Say(Request) returns (Response){}
+}
+
+message Request{
+  double a1 = 1;
+  float a2 = 2;
+  int32 a3 = 3;
+  uint32 a4 = 4;
+  uint64 a5 = 5;
+  sint32 a6 = 6;
+  sint64 a7 = 7;
+  fixed32 a8 = 8;
+  fixed64 a9 = 9;
+  sfixed32 a10 = 10;
+  sfixed64 a11 = 11;
+  bool a12 = 12;
+  string a13 = 13;
+  bytes a14 = 14;
+}
+message Item {
+  string name = 1;
+  fixed32 code = 2;
+}
+
+message ArrayRequest{
+  repeated int64 i_list =1;
+  repeated string j_list = 2;
+  repeated Item item_list = 3;
+}
+
+message MapRequest {
+  map<string,int64> M1 = 1;
+  map<string,Item> M2 = 2;
+}
+
+message Response{
+
+}
