@@ -1,0 +1,7 @@
+syntax = "proto3";
+package proto;
+option go_package = "/proto";
+import "go_basic/go_GRPC/service_proto/common.proto";
+service VideoService{
+  rpc Buy(Request) returns (Response){}
+}

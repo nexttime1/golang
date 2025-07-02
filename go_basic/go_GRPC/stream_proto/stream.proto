@@ -1,0 +1,37 @@
+syntax = "proto3";
+package proto;
+option go_package = "/proto";
+
+
+//普通的 一问一答式
+
+service Sample {
+  rpc SampleService(Request) returns (Response){}
+}
+
+
+//流式
+service StreamService {
+  rpc StreamFunc(Request) returns (stream Response){}
+  rpc DownLoadFunc(Request) returns (stream ByteResponse){}
+  rpc UpLoadFile(stream FileRequest) returns (Response){}
+}
+
+message FileRequest{
+  string File_name = 1;
+  bytes Cotent = 2;
+}
+
+message ByteResponse{
+  bytes Content = 1;
+}
+
+
+message Request{
+  string Name = 1;
+}
+
+message Response {
+  string Name = 1;
+  string Address = 2;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+package proto;
+option go_package = "/proto";
+
+message Request{
+  string name = 1;
+}
+message Response{
+  string name = 1;
+}
+
+//protoc -I . --go_out=plugins=grpc:./ .\video.proto
