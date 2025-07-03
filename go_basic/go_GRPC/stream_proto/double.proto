@@ -1,0 +1,19 @@
+syntax = "proto3";
+package DoubleProto;
+option go_package = "/DoubleProto";
+
+
+//  微信聊天形式
+
+
+service BothStream {
+  rpc Chat(stream Request) returns (stream Response){}
+}
+
+message Request{
+  bytes Content = 1;
+}
+
+message  Response {
+  bytes Content = 1;
+}
