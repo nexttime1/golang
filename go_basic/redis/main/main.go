@@ -4,13 +4,15 @@ import (
 	"fmt"
 	"github.com/go-redis/redis"
 	"log"
+	"time"
 )
 
 func main() {
 	redisClient := redis.NewClient(&redis.Options{
-		Addr:     "127.0.0.1:6379",
-		Password: "",
-		DB:       0, // 使用默认DB
+		Addr:        "127.0.0.1:6379",
+		Password:    "",
+		DB:          0, // 使用默认DB
+		DialTimeout: time.Second,
 	})
 	//redisClient.Set("hello", "world", 0)
 	defer redisClient.Close()
