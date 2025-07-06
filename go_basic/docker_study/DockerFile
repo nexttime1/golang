@@ -1,0 +1,20 @@
+# 代表 docker pull nginx
+FROM nginx:latest
+# 设置工作目录
+WORKDIR xuetimeng
+COPY index.html /xuetimeng/html/
+
+COPY index.html /usr/share/nginx/html/
+
+ENV name "xtm"
+ENV age=23
+
+
+#示例，演示run命令的两种不同写法
+RUN yum install -y vim #Shell命令格式
+RUN ["yum "," install" ,"-y","vim"]                      #Exec命令格式
+
+#dockerfile 中如果存在多个CMD指令，仅能保证最后一个生效。
+
+CMD echo "YYDS"
+ENTRYPOINT echo "Hello world"
