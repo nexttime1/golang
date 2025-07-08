@@ -3,25 +3,26 @@ package main
 import (
 	"redis_1/es_study/core"
 	"redis_1/es_study/doc"
+	"redis_1/es_study/indexs"
 )
 
 func main() {
 	core.EsConnect()
-	//indexs.CreateIndex()
+	indexs.CreateIndex()
 
-	//doc.DocCreate()
+	doc.DocCreate()
 	//单个删除  根据id删除   没有会报错
-	//doc.DocDelete()
+	doc.DocDelete()
 
 	//删除多个   没有不会报错
-	//doc.DeleteBatch()
+	doc.DeleteBatch()
 	//添加多个
-	//doc.CreateBatch()
+	doc.CreateBatch()
 	//查询
-	//doc.DocSearch()
+	doc.DocSearch()
 
 	//精确匹配
-	//doc.ExactSearch()
+	doc.ExactSearch()
 
 	//模糊匹配
 	//doc.MatchSearch()
